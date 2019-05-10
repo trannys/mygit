@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lucq.mapper.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.lucq.entity.Account" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="phone_number" property="phoneNumber" jdbcType="CHAR" />
+    <result column="account_name" property="accountName" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="CHAR" />
+    <result column="bad_password_time" property="badPasswordTime" jdbcType="TIMESTAMP" />
+    <result column="bad_password_count" property="badPasswordCount" jdbcType="INTEGER" />
+    <result column="lockout_time" property="lockoutTime" jdbcType="TIMESTAMP" />
+    <result column="last_logon" property="lastLogon" jdbcType="TIMESTAMP" />
+    <result column="last_log_off" property="lastLogOff" jdbcType="TIMESTAMP" />
+    <result column="mail" property="mail" jdbcType="VARCHAR" />
+    <result column="password_last_set" property="passwordLastSet" jdbcType="TIMESTAMP" />
+    <result column="organization_id" property="organizationId" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="state" property="state" jdbcType="TINYINT" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_by" property="modifyBy" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="first_login_flag" property="firstLoginFlag" jdbcType="INTEGER" />
+    <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+    <result column="display_name" property="displayName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, phone_number, account_name, real_name, password, bad_password_time, bad_password_count, 
+    lockout_time, last_logon, last_log_off, mail, password_last_set, organization_id, 
+    type, state, create_by, create_time, modify_by, modify_time, first_login_flag, image_url, 
+    display_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from account
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lucq.entity.Account" >
+    insert into account (id, phone_number, account_name, 
+      real_name, password, bad_password_time, 
+      bad_password_count, lockout_time, last_logon, 
+      last_log_off, mail, password_last_set, 
+      organization_id, type, state, 
+      create_by, create_time, modify_by, 
+      modify_time, first_login_flag, image_url, 
+      display_name)
+    values (#{id,jdbcType=INTEGER}, #{phoneNumber,jdbcType=CHAR}, #{accountName,jdbcType=VARCHAR}, 
+      #{realName,jdbcType=VARCHAR}, #{password,jdbcType=CHAR}, #{badPasswordTime,jdbcType=TIMESTAMP}, 
+      #{badPasswordCount,jdbcType=INTEGER}, #{lockoutTime,jdbcType=TIMESTAMP}, #{lastLogon,jdbcType=TIMESTAMP}, 
+      #{lastLogOff,jdbcType=TIMESTAMP}, #{mail,jdbcType=VARCHAR}, #{passwordLastSet,jdbcType=TIMESTAMP}, 
+      #{organizationId,jdbcType=INTEGER}, #{type,jdbcType=TINYINT}, #{state,jdbcType=TINYINT}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{firstLoginFlag,jdbcType=INTEGER}, #{imageUrl,jdbcType=VARCHAR}, 
+      #{displayName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lucq.entity.Account" >
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="accountName != null" >
+        account_name,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="badPasswordTime != null" >
+        bad_password_time,
+      </if>
+      <if test="badPasswordCount != null" >
+        bad_password_count,
+      </if>
+      <if test="lockoutTime != null" >
+        lockout_time,
+      </if>
+      <if test="lastLogon != null" >
+        last_logon,
+      </if>
+      <if test="lastLogOff != null" >
+        last_log_off,
+      </if>
+      <if test="mail != null" >
+        mail,
+      </if>
+      <if test="passwordLastSet != null" >
+        password_last_set,
+      </if>
+      <if test="organizationId != null" >
+        organization_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyBy != null" >
+        modify_by,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="firstLoginFlag != null" >
+        first_login_flag,
+      </if>
+      <if test="imageUrl != null" >
+        image_url,
+      </if>
+      <if test="displayName != null" >
+        display_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=CHAR},
+      </if>
+      <if test="accountName != null" >
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=CHAR},
+      </if>
+      <if test="badPasswordTime != null" >
+        #{badPasswordTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="badPasswordCount != null" >
+        #{badPasswordCount,jdbcType=INTEGER},
+      </if>
+      <if test="lockoutTime != null" >
+        #{lockoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLogon != null" >
+        #{lastLogon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLogOff != null" >
+        #{lastLogOff,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mail != null" >
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordLastSet != null" >
+        #{passwordLastSet,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstLoginFlag != null" >
+        #{firstLoginFlag,jdbcType=INTEGER},
+      </if>
+      <if test="imageUrl != null" >
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="displayName != null" >
+        #{displayName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lucq.entity.Account" >
+    update account
+    <set >
+      <if test="phoneNumber != null" >
+        phone_number = #{phoneNumber,jdbcType=CHAR},
+      </if>
+      <if test="accountName != null" >
+        account_name = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=CHAR},
+      </if>
+      <if test="badPasswordTime != null" >
+        bad_password_time = #{badPasswordTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="badPasswordCount != null" >
+        bad_password_count = #{badPasswordCount,jdbcType=INTEGER},
+      </if>
+      <if test="lockoutTime != null" >
+        lockout_time = #{lockoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLogon != null" >
+        last_logon = #{lastLogon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLogOff != null" >
+        last_log_off = #{lastLogOff,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mail != null" >
+        mail = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordLastSet != null" >
+        password_last_set = #{passwordLastSet,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organizationId != null" >
+        organization_id = #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        modify_by = #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstLoginFlag != null" >
+        first_login_flag = #{firstLoginFlag,jdbcType=INTEGER},
+      </if>
+      <if test="imageUrl != null" >
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="displayName != null" >
+        display_name = #{displayName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lucq.entity.Account" >
+    update account
+    set phone_number = #{phoneNumber,jdbcType=CHAR},
+      account_name = #{accountName,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=CHAR},
+      bad_password_time = #{badPasswordTime,jdbcType=TIMESTAMP},
+      bad_password_count = #{badPasswordCount,jdbcType=INTEGER},
+      lockout_time = #{lockoutTime,jdbcType=TIMESTAMP},
+      last_logon = #{lastLogon,jdbcType=TIMESTAMP},
+      last_log_off = #{lastLogOff,jdbcType=TIMESTAMP},
+      mail = #{mail,jdbcType=VARCHAR},
+      password_last_set = #{passwordLastSet,jdbcType=TIMESTAMP},
+      organization_id = #{organizationId,jdbcType=INTEGER},
+      type = #{type,jdbcType=TINYINT},
+      state = #{state,jdbcType=TINYINT},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      first_login_flag = #{firstLoginFlag,jdbcType=INTEGER},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      display_name = #{displayName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="queryAccountInfo" resultType="com.lucq.account.vo.QueryAccountVo" parameterType="com.lucq.account.bo.QueryAccountBo">
+    select
+    <include refid="Base_Column_List" />
+    from account
+    where 1=1
+    <if test="phoneNumber != null and phoneNumber != ''">
+      and phone_number = #{phoneNumber}
+    </if>
+    <if test="displayName != null and displayName != ''">
+      and display_name = #{displayName}
+    </if>
+
+  </select>
+
+
+</mapper>

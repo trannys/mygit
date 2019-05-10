@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Test-auth" />
+        <module name="Test-common" />
+        <module name="Test-eureka" />
+        <module name="Test-service1" />
+        <module name="Testauth" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com.lucq" target="1.8" />
+      <module name="Test-auth" target="1.8" />
+      <module name="Test-cloud" target="1.8" />
+      <module name="Test-common" target="1.8" />
+      <module name="Test-common (1)" target="1.8" />
+      <module name="Test-eureka" target="1.8" />
+      <module name="Test-service1" target="1.8" />
+      <module name="Testauth" target="1.8" />
+      <module name="TestCloud" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

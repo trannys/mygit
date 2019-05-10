@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="generator.properties"/> 
+
+	<!-- Run Maven Build...   mybatis-generator:generate  -->
+    <context defaultModelType="flat" id="mysql" targetRuntime="MyBatis3Simple">
+        <!-- 生成的Java文件的编码  -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 生成根Mapper，用户可以看后边代码    -->
+        <plugin type="${mapperPlugin}">
+            <property name="mappers" value="${baseMapper}"/>
+        </plugin>
+
+        <jdbcConnection driverClass="${driverClassName}"
+                        connectionURL="${url}"
+                        userId="${username}" password="${password}">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="${generatorEntity}"
+                            targetProject="src/main/java">
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${generatorXmlMapper}"
+                         targetProject="src/main/resources">
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="${generatorMapper}"
+                             targetProject="src/main/java">
+        </javaClientGenerator>
+
+		<!-- tableName表名    domainObjectName 实体名  -->
+        <!-- <table schema="" tableName="leave" domainObjectName="Leave"></table> -->
+        <table schema="" tableName="pre_registration" domainObjectName="PreRegistration"></table>
+        <!-- <table schema="" tableName="course" domainObjectName="Course"></table>
+        <table schema="" tableName="course_package" domainObjectName="CoursePackage"></table>
+        <table schema="" tableName="course_package_relation" domainObjectName="CoursePackageRelation"></table>
+        <table schema="" tableName="organization" domainObjectName="Organization"></table>
+        <table schema="" tableName="school_class" domainObjectName="SchoolClass"></table>
+        <table schema="" tableName="school_class_course_plan" domainObjectName="SchoolClassCoursePlan"></table>
+        <table schema="" tableName="school_class_weekly_plan" domainObjectName="SchoolClassWeeklyPlan"></table>
+        <table schema="" tableName="student" domainObjectName="Student"></table>
+        <table schema="" tableName="student_class_attendance" domainObjectName="StudentClassAttendance"></table>
+        <table schema="" tableName="student_course" domainObjectName="StudentCourse"></table>
+        <table schema="" tableName="student_course_relation" domainObjectName="StudentCourseRelation"></table>
+        <table schema="" tableName="student_parent" domainObjectName="StudentParent"></table>
+        <table schema="" tableName="student_parent_relation" domainObjectName="StudentParentRelation"></table>
+        <table schema="" tableName="school_class_plan_temp" domainObjectName="SchoolClassPlanTemp" enableCountByExample="false" 
+        enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table> -->
+       
+    </context>
+</generatorConfiguration>

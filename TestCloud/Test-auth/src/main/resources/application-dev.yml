@@ -1,0 +1,64 @@
+#注册中心配置
+eureka:
+  instance:
+    hostname: localhost
+    # 定义心跳间隔时间，Eureka客户端向服务端发送心跳的时间间隔，单位：秒（默认30s）
+    # 注意：这种调高频率的操作只适用于实例较少的Eureka集群，因为会增加集群通信压力
+    lease-renewal-interval-in-seconds: 30
+    # 定义服务失效时间，Eureka服务端收到最后一次心跳之后等待的时间上限，超过该时间之后服务端会将该服务实例从服务清单中剔除，从而禁止服务调用请求被发送到该实例上，单位：秒（默认90s）
+    lease-expiration-duration-in-seconds: 90
+  client:
+    serviceUrl:
+          defaultZone: http://127.0.0.1:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+
+
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/lucq-oauth?setUnicode=true&characterEncoding=utf8
+    username: root
+    password: root1234
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+
+logging:
+   level:
+     root: debug
+
+#pagehelper分页插件配置
+pagehelper :
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+#security
+security:
+  oauth2:
+    resource:
+      serviceId: ${PREFIX:}resource
+      filter-order: 3
+      user-info-uri: http://127.0.0.1:8082/oauth/user
+#      token-info-uri: http://127.0.0.1:8082/oauth/oauth/check_token
+    client:
+      access-token-uri: http://127.0.0.1:8082/oauth/oauth/token
+      user-authorization-uri: http://127.0.0.1:8082/oauth/oauth/authorize

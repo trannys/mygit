@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: Test-eureka Maven Webapp
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: dell
+Implementation-Vendor-Id: Test-cloud
+Build-Jdk: 1.8.0
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/Test-cloud/Test-eureka
+Created-By: Maven Integration for Eclipse
+
